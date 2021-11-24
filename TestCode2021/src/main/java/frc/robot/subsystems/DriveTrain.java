@@ -29,15 +29,15 @@ addChild("Speed Controller 1",frontLeftController);
 frontLeftController.setInverted(false);
 
   rearLeftController = new PWMVictorSPX(RobotMap.rearLeftChannel);
-addChild("Speed Controller 1",rearLeftController);
+addChild("Speed Controller 2",rearLeftController);
 rearLeftController.setInverted(false);
 
   frontRightController = new PWMVictorSPX(RobotMap.frontRightChannel);
-addChild("Speed Controller 1",frontRightController);
+addChild("Speed Controller 3",frontRightController);
 frontRightController.setInverted(false);
 
   rearLeftController = new PWMVictorSPX(RobotMap.rearLeftChannel);
-addChild("Speed Controller 1",rearLeftController);
+addChild("Speed Controller 4",rearLeftController);
 rearLeftController.setInverted(false);
 
 mecanumDrive1 = new MecanumDrive(frontLeftController, rearLeftController,
