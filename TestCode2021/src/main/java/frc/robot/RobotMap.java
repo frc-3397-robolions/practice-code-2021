@@ -17,4 +17,6 @@ public class RobotMap {
   public static final int xbControllerPort = 0;
   public static final int intakeChannel = 0;
   public static final double intakeSpeed = 0.5;
+  public static final double baseForwardSpeed = 0.5;
+  public static final double baseTurnSpeed = 0.5;
 }

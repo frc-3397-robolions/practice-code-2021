@@ -4,34 +4,28 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class Autonomous extends Command {
+public class Autonomous extends CommandGroup {
+  /** Add your docs here. */
   public Autonomous() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    addSequential(new DriveForward(5));
+    addSequential(new TimedTurn(5));
+    // Add Commands here:
+    // e.g. addSequential(new Command1());
+    // addSequential(new Command2());
+    // these will run in order.
+
+    // To run multiple commands at the same time,
+    // use addParallel()
+    // e.g. addParallel(new Command1());
+    // addSequential(new Command2());
+    // Command1 and Command2 will run in parallel.
+
+    // A command group will require all of the subsystems that each member
+    // would require.
+    // e.g. if Command1 requires chassis, and Command2 requires arm,
+    // a CommandGroup containing them would require both the chassis and the
+    // arm.
   }
-
-  // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {}
-
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {}
-
-  // Make this return true when this Command no longer needs to run execute()
-  @Override
-  protected boolean isFinished() {
-    return false;
-  }
-
-  // Called once after isFinished returns true
-  @Override
-  protected void end() {}
-
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {}
 }

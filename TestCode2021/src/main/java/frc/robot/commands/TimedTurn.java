@@ -4,36 +4,56 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
+import frc.robot.RobotMap;
+import frc.robot.subsystems.DriveTrain;
 
-/** An example command. You can replace me with your own command. */
-public class ExampleCommand extends Command {
-  public ExampleCommand() {
+public class TimedTurn extends Command {
+  DriveTrain driveTrain = new DriveTrain();
+  double time;
+  Timer timer = new Timer();
+
+  public TimedTurn(double time) {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.driveTrain);
+    // eg. requires(chassis);
+    requires(driveTrain);
+    this.time = time;
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {}
+  protected void initialize() {
+    timer.start();
+  }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {}
+  protected void execute() {
+      driveTrain.runMecanumDrive(0, 0, RobotMap.baseTurnSpeed);
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    if(timer.get()>time){
+      return true;
+    }
     return false;
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {}
+  protected void end() {
+    timer.stop();
+    driveTrain.runMecanumDrive(0, 0, 0);
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {}
+  protected void interrupted() {
+    timer.stop();
+    driveTrain.runMecanumDrive(0, 0, 0);
+  }
 }
