@@ -4,11 +4,9 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.OI;
-import frc.robot.RobotMap;
 
 public class ArcadeDrive extends Command {
   DriveTrain driveTrain = new DriveTrain();

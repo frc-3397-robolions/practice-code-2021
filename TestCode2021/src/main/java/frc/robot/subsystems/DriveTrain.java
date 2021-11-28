@@ -25,27 +25,27 @@ public void runMecanumDrive(double ySpeed, double xSpeed, double zRotation){
 }
 public DriveTrain(){
   frontLeftController = new PWMVictorSPX(RobotMap.frontLeftChannel);
-addChild("Speed Controller 1",frontLeftController);
-frontLeftController.setInverted(false);
+  addChild("Front Left Motor Controller",frontLeftController);
+  frontLeftController.setInverted(false);
 
   rearLeftController = new PWMVictorSPX(RobotMap.rearLeftChannel);
-addChild("Speed Controller 2",rearLeftController);
-rearLeftController.setInverted(false);
+  addChild("Rear Left Motor Controller",rearLeftController);
+  rearLeftController.setInverted(false);
 
   frontRightController = new PWMVictorSPX(RobotMap.frontRightChannel);
-addChild("Speed Controller 3",frontRightController);
-frontRightController.setInverted(false);
+  addChild("Front Right Motor Controller",frontRightController);
+  frontRightController.setInverted(false);
 
   rearLeftController = new PWMVictorSPX(RobotMap.rearLeftChannel);
-addChild("Speed Controller 4",rearLeftController);
-rearLeftController.setInverted(false);
+  addChild("Rear Right Motor Controller",rearLeftController);
+  rearLeftController.setInverted(false);
 
-mecanumDrive1 = new MecanumDrive(frontLeftController, rearLeftController,
-frontRightController, rearRightController);
-addChild("Mecanum Drive 1",mecanumDrive1);
-mecanumDrive1.setSafetyEnabled(true);
-mecanumDrive1.setExpiration(0.1);
-mecanumDrive1.setMaxOutput(1.0);
+  mecanumDrive1 = new MecanumDrive(frontLeftController, rearLeftController,
+  frontRightController, rearRightController);
+  addChild("Mecanum Drive 1",mecanumDrive1);
+  mecanumDrive1.setSafetyEnabled(true);
+  mecanumDrive1.setExpiration(0.1);
+  mecanumDrive1.setMaxOutput(1.0);
   
 }
   @Override

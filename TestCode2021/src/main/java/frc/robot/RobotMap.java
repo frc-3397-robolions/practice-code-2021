@@ -10,13 +10,25 @@ package frc.robot;
  * reduces the number of magic numbers floating around.
  */
 public class RobotMap {
+  // Set this to the port of the Xbox Controller, found in the Drive Station
+  public static final int xbControllerPort = 0;
+
+  // Set these to the port number of each PWM
   public static final int frontLeftChannel = 0;
   public static final int rearLeftChannel = 1;
   public static final int frontRightChannel = 2;
   public static final int rearRightChannel = 3;
-  public static final int xbControllerPort = 0;
   public static final int intakeChannel = 0;
-  public static final double intakeSpeed = 0.5;
+  public static final int elevatorChannel = 0;
+  public static final int shooterChannel1 = 0;
+  public static final int shooterChannel2 = 0;
+
+  // These constants determine the base speed for running these actions
+  public static final double baseIntakeSpeed = 0.5;
   public static final double baseForwardSpeed = 0.5;
   public static final double baseTurnSpeed = 0.5;
+  public static final double baseElevatorSpeed = 0.5;
+  // currently running both motors in the gearbox at this speed, purposely low so it wont break if one needs to be inverted
+  public static final double baseShooterSpeed = 0.1;
+ 
 }

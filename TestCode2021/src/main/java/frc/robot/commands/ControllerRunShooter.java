@@ -5,16 +5,18 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.Intake;
 import frc.robot.OI;
+import frc.robot.RobotMap;
+import frc.robot.subsystems.Shooter;
 
-public class ControllerRunIntake extends Command {
-  Intake intake = new Intake();
+public class ControllerRunShooter extends Command {
+  Shooter shooter = new Shooter();
   OI oi = new OI();
-  public ControllerRunIntake() {
+
+  public ControllerRunShooter() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(intake);
+    requires(shooter);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +26,9 @@ public class ControllerRunIntake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    intake.runIntake(oi.triggerTotal);
+    if(oi.rBumperHeld){
+    shooter.runShooter(RobotMap.baseShooterSpeed);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -36,13 +40,13 @@ public class ControllerRunIntake extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    intake.runIntake(0);
+    shooter.runShooter(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    intake.runIntake(0);
+    shooter.runShooter(0);
   }
 }

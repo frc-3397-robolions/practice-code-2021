@@ -15,7 +15,10 @@ public class OI {
   public double stickX = xbController.getX(Hand.kLeft);
   public double stickY = xbController.getY(Hand.kLeft);
   public double stickZ = xbController.getX(Hand.kRight);
-  public double rightTrigger = xbController.getTriggerAxis(Hand.kRight);
+  public double triggerTotal = xbController.getTriggerAxis(Hand.kRight)-xbController.getTriggerAxis(Hand.kLeft);
+  public boolean aHeld = xbController.getAButton();
+  public boolean bHeld = xbController.getBButton();
+  public boolean rBumperHeld = xbController.getBumper(Hand.kRight);
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.

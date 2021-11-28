@@ -5,16 +5,18 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.Intake;
 import frc.robot.OI;
+import frc.robot.RobotMap;
+import frc.robot.subsystems.Elevator;
 
-public class ControllerRunIntake extends Command {
-  Intake intake = new Intake();
+public class ControllerRunElevator extends Command {
+  Elevator elevator = new Elevator();
   OI oi = new OI();
-  public ControllerRunIntake() {
+  double baseElevatorSpeed = RobotMap.baseElevatorSpeed;
+  public ControllerRunElevator() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(intake);
+    requires(elevator);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +26,15 @@ public class ControllerRunIntake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    intake.runIntake(oi.triggerTotal);
+    if(oi.aHeld){
+      elevator.runElevator(baseElevatorSpeed);
+    }
+    else if(oi.bHeld){
+      elevator.runElevator(baseElevatorSpeed);
+    }
+    else{
+      elevator.runElevator(0);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -36,13 +46,13 @@ public class ControllerRunIntake extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    intake.runIntake(0);
+    elevator.runElevator(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    intake.runIntake(0);
+    elevator.runElevator(0);
   }
 }
