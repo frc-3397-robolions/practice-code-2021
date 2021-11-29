@@ -25,6 +25,7 @@ public class Robot extends TimedRobot {
 
   Command autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+  SendableChooser<Double> shootSpeedChooser = new SendableChooser<>();
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -35,9 +36,20 @@ public class Robot extends TimedRobot {
     oi = new OI();
     // Start the camera, theoretically
     CameraServer.getInstance().startAutomaticCapture();
+    // WPIlib code for choosing an auto phase from SmartDB, we don't do that yet.
     m_chooser.setDefaultOption("Default Auto", new Autonomous());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+    // How to add an option: chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    // My code for hopefully choosing the shooter speed from SmartDB
+    shootSpeedChooser.setDefaultOption("100% Power", RobotMap.baseShooterSpeed);
+    shootSpeedChooser.addOption("75% Power", RobotMap.baseShooterSpeed*0.75);
+    shootSpeedChooser.addOption("50% Power", RobotMap.baseShooterSpeed*0.5);
+    SmartDashboard.putData("Shooter Power", shootSpeedChooser);
+
+  }
+
+  public double getShootSpeedChooser() {
+    return shootSpeedChooser.getSelected();
   }
 
   /**
@@ -98,6 +110,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
   }
 
   /** This function is called periodically during test mode. */

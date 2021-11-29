@@ -6,12 +6,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
-import frc.robot.RobotMap;
+import frc.robot.Robot;
 import frc.robot.subsystems.Shooter;
 
 public class ControllerRunShooter extends Command {
   Shooter shooter = new Shooter();
   OI oi = new OI();
+  Robot robot = new Robot();
 
   public ControllerRunShooter() {
     // Use requires() here to declare subsystem dependencies
@@ -27,7 +28,7 @@ public class ControllerRunShooter extends Command {
   @Override
   protected void execute() {
     if(oi.rBumperHeld){
-    shooter.runShooter(RobotMap.baseShooterSpeed);
+    shooter.runShooter(robot.getShootSpeedChooser());
     }
   }
 
