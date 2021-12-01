@@ -6,19 +6,42 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+
 /**
- * This class is the glue that binds the controls on the physical operator interface to the commands
+ * This class is the glue that binds the controls on the physical operator
+ * interface to the commands
  * and command groups that allow control of the robot.
  */
 public class OI {
   public XboxController xbController = new XboxController(RobotMap.xbControllerPort);
-  public double stickX = xbController.getX(Hand.kLeft);
-  public double stickY = xbController.getY(Hand.kLeft);
-  public double stickZ = xbController.getX(Hand.kRight);
-  public double triggerTotal = xbController.getTriggerAxis(Hand.kRight)-xbController.getTriggerAxis(Hand.kLeft);
-  public boolean aHeld = xbController.getAButton();
-  public boolean bHeld = xbController.getBButton();
-  public boolean rBumperHeld = xbController.getBumper(Hand.kRight);
+
+  public double getStickX() {
+    return xbController.getX(Hand.kLeft);
+  }
+
+  public double getStickY() {
+    return xbController.getY(Hand.kLeft);
+  }
+
+  public double getStickZ() {
+    return xbController.getX(Hand.kRight);
+  }
+
+  public double getTriggerTotal() {
+    return xbController.getTriggerAxis(Hand.kRight) - xbController.getTriggerAxis(Hand.kLeft);
+  }
+
+  public boolean getAHeld() {
+    return xbController.getAButton();
+  }
+
+  public boolean getBHeld() {
+    return xbController.getBButton();
+  }
+
+  public boolean getRBumperHeld() {
+    return xbController.getBumper(Hand.kRight);
+  }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.

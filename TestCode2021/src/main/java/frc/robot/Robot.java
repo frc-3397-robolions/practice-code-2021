@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.Autonomous;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.TestMotors;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -22,14 +23,17 @@ import frc.robot.subsystems.DriveTrain;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DriveTrain driveTrain = new DriveTrain();
-  Gyro gyro = new AnalogGyro(RobotMap.gyroPort);
-  public static OI oi;
+  static DriveTrain driveTrain;
+  static OI oi;
+
+
+  public static OI getOI() {
+    return oi;
+  }
 
   Command autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   SendableChooser<Double> shootSpeedChooser = new SendableChooser<>();
-
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -40,7 +44,7 @@ public class Robot extends TimedRobot {
     // Start the camera, theoretically
     CameraServer.getInstance().startAutomaticCapture();
     // WPIlib code for choosing an auto phase from SmartDB, we don't do that yet.
-    m_chooser.setDefaultOption("Default Auto", new Autonomous());
+    // m_chooser.setDefaultOption("Default Auto", new Autonomous());
     // How to add an option: chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     // My code for hopefully choosing the shooter speed from SmartDB
@@ -53,6 +57,10 @@ public class Robot extends TimedRobot {
 
   public double getShootSpeedChooser() {
     return shootSpeedChooser.getSelected();
+  }
+
+  public static DriveTrain getDriveTrain(){
+    return driveTrain;
   }
 
   /**
@@ -89,6 +97,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    driveTrain = ((driveTrain==null) ? new DriveTrain():driveTrain);
     autonomousCommand.start();
   }
 
@@ -107,12 +116,29 @@ public class Robot extends TimedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
+    driveTrain = ((driveTrain==null) ? new DriveTrain():driveTrain);
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
+  }
+
+  @Override
+  public void testInit() {
+    // TODO Auto-generated method stub
+    super.testInit();
+    TestMotors testMotors = new TestMotors();
+    // testMotors.runTestMotor(0);
+    // testMotors.runTestMotor(1);
+    // testMotors.runTestMotor(2);
+    // testMotors.runTestMotor(3);
+    testMotors.runTestMotor(RobotMap.frontLeftChannel);
+    testMotors.runTestMotor(RobotMap.frontRightChannel);
+    testMotors.runTestMotor(RobotMap.rearLeftChannel);
+    testMotors.runTestMotor(RobotMap.rearRightChannel);
 
   }
 

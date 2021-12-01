@@ -23,6 +23,9 @@ private MecanumDrive mecanumDrive1;
 public void runMecanumDrive(double ySpeed, double xSpeed, double zRotation){
   mecanumDrive1.driveCartesian(ySpeed, xSpeed, zRotation);
 }
+public void runFrontLeft(){
+  
+}
 public DriveTrain(){
   frontLeftController = new PWMVictorSPX(RobotMap.frontLeftChannel);
   addChild("Front Left Motor Controller",frontLeftController);
@@ -36,9 +39,9 @@ public DriveTrain(){
   addChild("Front Right Motor Controller",frontRightController);
   frontRightController.setInverted(false);
 
-  rearLeftController = new PWMVictorSPX(RobotMap.rearLeftChannel);
-  addChild("Rear Right Motor Controller",rearLeftController);
-  rearLeftController.setInverted(false);
+  rearRightController = new PWMVictorSPX(RobotMap.rearRightChannel);
+  addChild("Rear Right Motor Controller",rearRightController);
+  rearRightController.setInverted(false);
 
   mecanumDrive1 = new MecanumDrive(frontLeftController, rearLeftController,
   frontRightController, rearRightController);

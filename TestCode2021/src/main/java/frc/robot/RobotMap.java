@@ -13,17 +13,18 @@ public class RobotMap {
   // Set this to the port of the Xbox Controller, found in the Drive Station
   public static final int xbControllerPort = 0;
   // Not sure if we have a gyro. If we do it probably needs calibration before we can use it. Shouldn't break anything if we just leave it as is until thats figured out.
-  public static final int gyroPort = 0;
+  public static final int gyroPort = 20;
 
   // Set these to the port number of each PWM
-  public static final int frontLeftChannel = 0;
-  public static final int rearLeftChannel = 1;
-  public static final int frontRightChannel = 2;
-  public static final int rearRightChannel = 3;
-  public static final int intakeChannel = 0;
-  public static final int elevatorChannel = 0;
-  public static final int shooterChannel1 = 0;
-  public static final int shooterChannel2 = 0;
+  public static final int frontLeftChannel = 3;
+  public static final int rearLeftChannel = 0;
+  public static final int frontRightChannel = 1;
+  public static final int rearRightChannel = 2;
+
+  public static final int intakeChannel = 5;
+  public static final int elevatorChannel = 4;
+  public static final int shooterChannel1 = 3;
+  public static final int shooterChannel2 = 14;
 
 
   // These constants determine the base speed for running these actions

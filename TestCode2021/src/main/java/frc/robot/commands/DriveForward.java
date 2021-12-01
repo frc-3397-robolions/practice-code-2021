@@ -6,16 +6,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.DriveTrain;
 
 public class DriveForward extends Command {
-  DriveTrain driveTrain = new DriveTrain();
   double time;
   Timer timer = new Timer();
+  DriveTrain driveTrain;
   public DriveForward(double time) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    this.driveTrain = Robot.getDriveTrain();
     requires(driveTrain);
     this.time = time;
   }

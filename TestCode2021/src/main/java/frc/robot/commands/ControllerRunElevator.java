@@ -26,11 +26,11 @@ public class ControllerRunElevator extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(oi.aHeld){
+    if(oi.getAHeld()){
       elevator.runElevator(baseElevatorSpeed);
     }
-    else if(oi.bHeld){
-      elevator.runElevator(baseElevatorSpeed);
+    else if(oi.getBHeld()){
+      elevator.runElevator(-baseElevatorSpeed);
     }
     else{
       elevator.runElevator(0);

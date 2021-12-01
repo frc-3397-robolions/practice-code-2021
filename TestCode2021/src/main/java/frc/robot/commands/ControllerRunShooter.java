@@ -27,7 +27,7 @@ public class ControllerRunShooter extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(oi.rBumperHeld){
+    if(oi.getRBumperHeld()){
     shooter.runShooter(robot.getShootSpeedChooser());
     }
   }
