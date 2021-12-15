@@ -14,14 +14,17 @@ public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private PWMVictorSPX intakeController;
-  public Intake(){
+
+  public Intake() {
     intakeController = new PWMVictorSPX(RobotMap.intakeChannel);
-addChild("Intake Controller",intakeController);
-intakeController.setInverted(false);
+    addChild("Intake Controller", intakeController);
+    intakeController.setInverted(false);
   }
-  public void runIntake(double speed){
+
+  public void runIntake(double speed) {
     intakeController.set(speed);
   }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

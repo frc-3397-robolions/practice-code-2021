@@ -10,9 +10,9 @@ import frc.robot.Robot;
 import frc.robot.subsystems.Shooter;
 
 public class ControllerRunShooter extends Command {
-  Shooter shooter = new Shooter();
-  OI oi = new OI();
-  Robot robot = new Robot();
+  Shooter shooter = Robot.getShooter();
+  OI oi = Robot.getOI();
+  private double shootSpeedChooser;
 
   public ControllerRunShooter() {
     // Use requires() here to declare subsystem dependencies
@@ -27,8 +27,12 @@ public class ControllerRunShooter extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    shootSpeedChooser = Robot.getShootSpeedChooser();
     if(oi.getRBumperHeld()){
-    shooter.runShooter(robot.getShootSpeedChooser());
+    shooter.runShooter(this.shootSpeedChooser);
+    }
+    else{
+      shooter.runShooter(0);
     }
   }
 

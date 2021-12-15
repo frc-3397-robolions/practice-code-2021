@@ -21,19 +21,19 @@ public class RobotMap {
   public static final int frontRightChannel = 1;
   public static final int rearRightChannel = 2;
 
-  public static final int intakeChannel = 5;
+  public static final int intakeChannel = 8;
   public static final int elevatorChannel = 4;
-  public static final int shooterChannel1 = 3;
-  public static final int shooterChannel2 = 14;
+  public static final int shooterChannel1 = 6;
+  public static final int shooterChannel2 = 7;
 
 
   // These constants determine the base speed for running these actions
-  public static final double baseIntakeSpeed = 0.5;
+  public static final double baseIntakeSpeed = 0.75;
   public static final double baseForwardSpeed = 0.5;
   public static final double baseTurnSpeed = 0.5;
   public static final double baseElevatorSpeed = 0.5;
   // currently running both motors in the gearbox at this speed, purposely low so it wont break if one needs to be inverted
-  public static final double baseShooterSpeed = 0.1;
+  public static final double baseShooterSpeed = 1;
 
 
  

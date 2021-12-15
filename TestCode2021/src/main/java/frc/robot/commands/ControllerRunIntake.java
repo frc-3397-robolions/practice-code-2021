@@ -7,10 +7,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.Intake;
 import frc.robot.OI;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class ControllerRunIntake extends Command {
-  Intake intake = new Intake();
-  OI oi = new OI();
+  Intake intake = Robot.getIntake();
+  OI oi = Robot.getOI();
   public ControllerRunIntake() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -24,7 +26,7 @@ public class ControllerRunIntake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    intake.runIntake(oi.getTriggerTotal());
+    intake.runIntake(oi.getTriggerTotal()*RobotMap.baseIntakeSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()

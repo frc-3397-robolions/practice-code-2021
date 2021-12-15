@@ -6,12 +6,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.Elevator;
 
 public class ControllerRunElevator extends Command {
-  Elevator elevator = new Elevator();
-  OI oi = new OI();
+  OI oi = Robot.getOI();
+  Elevator elevator = Robot.getElevator();
   double baseElevatorSpeed = RobotMap.baseElevatorSpeed;
   public ControllerRunElevator() {
     // Use requires() here to declare subsystem dependencies
