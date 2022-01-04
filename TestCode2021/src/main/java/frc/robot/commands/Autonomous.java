@@ -5,12 +5,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.RobotMap;
 
 public class Autonomous extends CommandGroup {
   /** Add your docs here. */
   public Autonomous() {
-    addSequential(new DriveForward(5));
-    addSequential(new TimedTurn(5));
+    addSequential(AutoShooter(2));
+    addParallel(AutoShooter(5, RobotMap.baseShooterSpeed));
+    addParallel(AutoElevator(5));
+    addParallel(AutoIntake(5));
+    addSequential(DriveBackward(1));
+    addSequential(TimedTurn(3));
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

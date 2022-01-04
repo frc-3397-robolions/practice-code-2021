@@ -4,22 +4,22 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj.Timer;
 
-public class DriveForward extends Command {
+
+public class AutoElevator extends Command {
+  javax.swing.Timer timer = new Timer();
+  Elevator elevator;
   double time;
-  Timer timer = new Timer();
-  DriveTrain driveTrain;
 
-  public DriveForward(double time) {
+  public AutoElevator(double time) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    this.driveTrain = Robot.getDriveTrain();
-    requires(driveTrain);
+    this.elevator = Robot.getElevator();
+    requires(elevator);
     this.time = time;
   }
 
@@ -32,29 +32,27 @@ public class DriveForward extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      driveTrain.runMecanumDrive(RobotMap.baseForwardSpeed, 0, 0);
+    shooter.runElevator(RobotMap.baseElevatorSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     if(timer.get()>time)
-      return true;
+    return true;
     return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    timer.stop();
-    driveTrain.runMecanumDrive(0, 0, 0);
+    elevator.runElevator(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    timer.stop();
-    driveTrain.runMecanumDrive(0, 0, 0);
+    elevator.runElevator(0);
   }
 }

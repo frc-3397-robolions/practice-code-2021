@@ -10,12 +10,12 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.DriveTrain;
 
-public class DriveForward extends Command {
+public class DriveBackward extends Command {
   double time;
   Timer timer = new Timer();
   DriveTrain driveTrain;
 
-  public DriveForward(double time) {
+  public DriveBackward(double time) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     this.driveTrain = Robot.getDriveTrain();
@@ -32,7 +32,7 @@ public class DriveForward extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      driveTrain.runMecanumDrive(RobotMap.baseForwardSpeed, 0, 0);
+      driveTrain.runMecanumDrive(-RobotMap.baseForwardSpeed, 0, 0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
